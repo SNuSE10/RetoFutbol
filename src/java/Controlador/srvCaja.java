@@ -17,7 +17,6 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Juan
  */
 @WebServlet(name = "srvCaja", urlPatterns = {"/srvCaja"})
 public class srvCaja extends HttpServlet {
