@@ -1,9 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Modelo.Usuario" %>
 <%
-    // Obtener el valor del rol desde el alcance de sesión
-    Usuario usuario2 = (Usuario) session.getAttribute("usuario");
-    String rol = usuario2.getRol();
+     Usuario usuario2 = (Usuario) session.getAttribute("usuario");
+    String rol = null;
+
+    if (usuario2 != null) {
+        rol = usuario2.getRol();
+    } else {
+        // Redirigir al usuario a la página de inicio de sesión o manejar el error
+        response.sendRedirect("login.jsp"); // Asumiendo que "login.jsp" es tu página de inicio de sesión
+        return; // Asegura que el resto del código JSP no se ejecute
+    }
 %>
 <!DOCTYPE html>
 <html lang="es">

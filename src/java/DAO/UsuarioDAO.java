@@ -1,6 +1,7 @@
 package DAO;
 
 import Modelo.Usuario;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class UsuarioDAO extends Conexion {
                 user.setRol(rs.getString(7));
                 lista.add(user); //agregamos el objeto a la lista
             }
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             System.out.println("ERROR no se puede traer la lista de usuarios a la base de datos. " + ex);
         }
         return lista; // retornamos la lista con todos los registros
@@ -71,7 +72,7 @@ public class UsuarioDAO extends Conexion {
             ps.executeUpdate();
             ps.close();
             con.close();
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             System.out.println("ERROR al insertar Usuarios. " + ex);
         }
     }
@@ -84,7 +85,7 @@ public class UsuarioDAO extends Conexion {
             ps.setInt(1, idUsuario);
             ps.executeUpdate();
             con.close();
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             System.out.println("ERROR al eliminar usuario... " + ex);
         }
     }
@@ -105,7 +106,7 @@ public class UsuarioDAO extends Conexion {
                 usuario.setClave(rs.getString(6));
                 usuario.setRol(rs.getString(7));
             }
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             System.out.println("ERROR al obtener el usuario por ID... "+ex);
         }
         return usuario;
@@ -124,7 +125,7 @@ public class UsuarioDAO extends Conexion {
             ps.setString(6, user.getRol());
             ps.setInt(7, user.getId());
             ps.executeUpdate();
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             System.out.println("ERROR al actualizar usuario... " + ex);
         }
     }
